@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Console</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link href="main.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="styles.css">
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="script.js"></script>
+</head>
+<body style="background-color:#f1f1f1;">
+
+<div class="container-fluid">
+  <nav class="navbar navbar-fixed-top">
+  <div id='cssmenu'>
+  <ul>
+    <li ><a href="/lib/admin.html">Home</a></li>
+    <li><a href="/lib/shelf.html">Shelf</a></li>
+    <li><a href="/lib/student_portal.php">Student Portal</a></li>
+    <li><a href="/lib/staff_portal.php">Staff Portal</a></li>
+    <li><a href="/lib/newbook.html">Add new Book</a></li>
+    <li><a href="/lib/newuser.html">Add new User </a></li>
+    <li class="navbar-right"><a href="/lib/login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+  </ul>
+  </div>
+  </nav>
+</div>
+
+<nav class="navbar navbar-inverse container">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button aria-expanded="false" class="navbar-toggle collapsed" data-target=
+      "#bs-example-navbar-collapse-1" data-toggle="collapse" type=
+      "button"><span class="sr-only">Toggle navigation</span> <span class=
+      "icon-bar"></span> <span class="icon-bar"></span> <span class=
+      "icon-bar"></span></button> <a class="navbar-brand" href="#">Masters Mind</a>
+    </div><!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/lib/admin.html">Home</a></li>
+          <li><a href="/lib/shelf.html">Shelf</a></li>
+          <li><a href="/lib/student_portal.php">Student Portal</a></li>
+          <li><a href="/lib/staff_portal.php">Staff Portal</a></li>
+          <li><a href="/lib/newbook.html">Add new Book</a></li>
+          <li><a href="/lib/newuser.html">Add new User </a></li>
+          <li class="navbar-right"><a href="/lib/login.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+<div class="container bootstrap snippet" style="margin-top:80px;">
+  <div class="row">
+    <div class="col-lg-6 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading dark-blue"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content dark-blue">
+          <div class="circle-tile-description text-faded">STUDENTs</div>
+          <div class="circle-tile-number text-faded "><span id="num">0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6">
+      <div class="circle-tile ">
+        <a href="#"><div class="circle-tile-heading red"><i class="fa fa-users fa-fw fa-3x"></i></div></a>
+        <div class="circle-tile-content red">
+          <div class="circle-tile-description text-faded"> STAFFS </div>
+          <div class="circle-tile-number text-faded "><span id="num1">0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div align="center">
+  <h1 align="center">Welcome to Admin console!!</h1>
+  <h3 align="center">Submitted By</h3>
+  <center>Adarsh J </br>
+      Akshay C</br>
+  Bibin Jaimon</br>
+  <center>
+</div>
+    <h3>Key Functionaliies</h3>
+    <ul><li>Shelf</li>
+        <li>Student Details</li>
+        <li>Staff Details</li>
+        <li>Add new users</li>
+        <li>Add new books</li>
+    <ul>
+</div>
+</div>
+<script>
+$(document).ready(function() {
+function displaydata() {
+     // window.location = '/homepage.html';
+     //alert(token);
+      $.ajax({
+          url: 'home.php',
+          method: 'get',
+          headers: {
+               'Content-Type': 'application/json'
+          },
+      }).done(function(data){
+        data = JSON.parse(data);
+        document.getElementById('num').innerHTML = data.student_count;
+        document.getElementById('num1').innerHTML = data.staff_count;
+      }).fail(function(data){
+
+      })
+    }
+    displaydata();
+  })
+
+
+</script>
+
+</body>
+</html>
